@@ -7,14 +7,23 @@ using TMPro;
 using UnityEditor;
 #endif
 
+[DefaultExecutionOrder(1000)]
 public class MenuUIHandler : MonoBehaviour
 {
     [SerializeField] TMP_InputField playerNameField;
     [SerializeField] GameObject missingNameText;
+    [SerializeField] TMP_Text currentHighscore;
 
-    private void Start()
+    private void Awake()
     {
-        
+        if (GameManager.Instance.highscore == 0)
+        {
+            currentHighscore.text = $"Best Score: N/A : 0";
+        }
+        else
+        {
+            currentHighscore.text = $"Best Score: {GameManager.Instance.highscoreName} : {GameManager.Instance.highscore}";
+        }
     }
 
     public void StartNew()

@@ -44,12 +44,14 @@ public class MainManager : MonoBehaviour
 
         if (GameManager.Instance.highscore == 0)
         {
-            CurrentHighscoreText.text = $"Best Score: {GameManager.Instance.playerName} : 0";
+            CurrentHighscoreText.text = $"Best Score: N/A : 0";
         }
         else
         {
             CurrentHighscoreText.text = $"Best Score: {GameManager.Instance.highscoreName} : {GameManager.Instance.highscore.ToString()}";
         }
+
+        ScoreText.text = $"{GameManager.Instance.playerName} - Score : {m_Points}";
     }
 
     private void Update()
@@ -88,7 +90,7 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        ScoreText.text = $"{GameManager.Instance.playerName} - Score : {m_Points}";
     }
 
     public void GameOver()
